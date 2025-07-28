@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  flowmind:
+    image: flowmind:latest
+    ports:
+      - "8001:8001"
+    build: ./flowmind
+    env_file:
+      - .env
+
+  flowops:
+    build: ./flowops
+    ports:
+      - "8002:8000"
+    depends_on:
+      - flowmind
